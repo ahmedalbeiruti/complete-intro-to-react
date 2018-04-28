@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.9.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js lint
+  /usr/local/Cellar/node/9.9.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -17,10 +17,18 @@ npm manifest:
   {
     "scripts": {
       "api": "node ratingsAPI.js",
-      "build":"webpack",
+      "build": "webpack",
+      "dev": "webpack-dev-server",
       "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
       "lint": "eslint **/*.{js,jsx} --quiet",
+      "test": "jest",
+      "test:update": "jest -u",
       "watch": "webpack --watch"
+    },
+    "jest":{
+      "snapshotSerializers":[
+        "jest-serializer-enzyme"
+      ]
     },
     "dependencies": {
       "axios": "0.16.1",
@@ -31,6 +39,7 @@ npm manifest:
       "cors": "2.8.3",
       "express": "4.15.3",
       "global": "^4.3.2",
+      "jest-cli": "^22.4.3",
       "lodash": "4.17.4",
       "preact": "8.1.0",
       "preact-compat": "3.16.0",
@@ -58,6 +67,7 @@ npm manifest:
       "babel-preset-env": "1.5.1",
       "babel-preset-react": "6.24.1",
       "enzyme": "2.8.2",
+      "eslint": "^4.19.1",
       "eslint-config-airbnb": "15.0.1",
       "eslint-config-prettier": "2.1.1",
       "eslint-config-react": "1.1.7",
@@ -6934,7 +6944,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c eslint **/*.{js,jsx} --quiet
+  Arguments: -c jest
   Directory: /Users/ahmed/complete-intro-to-react
   Output:
   
