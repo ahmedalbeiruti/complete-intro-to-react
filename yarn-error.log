@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.9.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test
+  /usr/local/Cellar/node/9.9.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js flow
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -22,6 +22,7 @@ npm manifest:
       "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
       "lint": "eslint **/*.{js,jsx} --quiet",
       "test": "jest",
+      "test:coverage":"jest --coverage",
       "test:update": "jest -u",
       "watch": "webpack --watch"
     },
@@ -6942,9 +6943,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 2
   Command: sh
-  Arguments: -c jest
+  Arguments: -c /Users/ahmed/complete-intro-to-react/node_modules/.bin/flow
   Directory: /Users/ahmed/complete-intro-to-react
   Output:
   
