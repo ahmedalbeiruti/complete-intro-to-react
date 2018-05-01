@@ -1,0 +1,15 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/styled-components/*
+<PROJECT_ROOT>/node_modules/jest-runner/node_modules/chalk/*
+<PROJECT_ROOT>/node_modules/@babel/highlight/node_modules/chalk/*
+<PROJECT_ROOT>/node_modules/eslint/node_modules/chalk/*
+<PROJECT_ROOT>/node_modules/expect/node_modules/chalk/*
+<PROJECT_ROOT>/node_modules/inquirer/node_modules/chalk/*
+<PROJECT_ROOT>/node_modules/jest-cli/node_modules/chalk/*
+<PROJECT_ROOT>/node_modules/table/node_modules/chalk/*
+
+[include]
+
+[libs]
+styled-components
+[options]
