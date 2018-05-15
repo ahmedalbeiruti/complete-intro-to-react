@@ -2,14 +2,18 @@
 
 import React, { Component } from 'react';
 import ShowCard from './ShowCard';
-import preload from '../data.json';
+import Header from './Header';
 
 class Search extends Component {
   state = {
     searchTerm: ''
   };
 
-  handleSearchTerm = (
+  props: {
+    shows: Array<Show>
+  };
+
+  handleSearchTermChange = (
     event: SyntheticKeyboardEvent & { target: HTMLInputElement }
   ) => {
     this.setState({ searchTerm: event.target.value });
@@ -17,18 +21,14 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>svideo</h1>
-          <input
-            type="text"
-            onChange={this.handleSearchTerm}
-            placeholder="Search"
-            value={this.state.searchTerm}
-          />
-        </header>
+        <Header
+          showSearch
+          searchTerm={this.state.searchTerm}
+          handleSearchTermChange={this.handleSearchTermChange}
+        />
 
         <div>
-          {preload.shows
+          {this.props.shows
             .filter(
               show =>
                 `${show.title} ${show.description}`
