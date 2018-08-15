@@ -1,14 +1,55 @@
 // @flow
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import type {RouterHistory} from "react-router-dom";
+import { setSearchTerm } from "./actionCreators";
 
-const Landing = () => (
-  <div className="landing">
-    <h1>svideo</h1>
-    <input type="text" name="" id="" placeholder="Search" />
-    <Link to="/search">or Browse All</Link>
-  </div>
-);
+class Landing extends Component {
 
-export default Landing;
+  props: { 
+    searchTerm: string, 
+    handleSearchTermChange: Function,
+    handleSearchAll: Function,
+    history: RouterHistory 
+  };
+
+  goToSearch=(event:SyntheticEvent)=>{
+    event.preventDefault();
+    this.props.history.push('/search');
+  }
+
+  render() {
+    return (
+      <div className="landing">
+        <h1>svideo</h1>
+        <form onSubmit={this.goToSearch}>
+        <input
+          value={this.props.searchTerm}
+          type="text"
+          name=""
+          id=""
+          onChange={this.props.handleSearchTermChange}
+          placeholder="Search"
+        />
+        </form>
+        <Link to="/search" onClick={this.props.handleSearchAll}>or Browse All</Link>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  searchTerm: state.searchTerm
+});
+const mapDispatchToProps = (dispatch: Function) => ({
+  handleSearchTermChange(event) {
+    dispatch(setSearchTerm(event.target.value));
+  },
+  handleSearchAll(){
+    dispatch(setSearchTerm(""));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);
