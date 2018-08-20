@@ -15,7 +15,7 @@ class Landing extends Component {
     history: RouterHistory 
   };
 
-  goToSearch=(event:SyntheticEvent)=>{
+  goToSearch=(event: SyntheticEvent)=>{
     event.preventDefault();
     this.props.history.push('/search');
   }
